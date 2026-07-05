@@ -5,7 +5,7 @@
 
 // ---------------- COUNTDOWN ----------------
 
-const drawDate = new Date("August 26, 2026 18:30:00").getTime();
+const drawDate = new Date("August 26, 2026 19:30:00").getTime();
 
 const timer = setInterval(() => {
 
