@@ -1,24 +1,24 @@
 [
   {
-    "coupon":"100001",
+    "coupon":"101",
     "name":"Nandu Krishnan",
     "prize":"🥇 First Prize",
     "public":true
   },
   {
-    "coupon":"100002",
+    "coupon":"102",
     "name":"Anjali S",
     "prize":"🥈 Second Prize",
     "public":true
   },
   {
-    "coupon":"100003",
+    "coupon":"103",
     "name":"Rahul R",
     "prize":"🥉 Third Prize",
     "public":true
   },
   {
-    "coupon":"101250",
+    "coupon":"104",
     "name":"Akhil",
     "prize":"🎁 Consolation Prize",
     "public":false
