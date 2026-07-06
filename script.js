@@ -1,21 +1,31 @@
-// =====================================
+// ============================================
 // SILVER ARTS AND CLUB
 // ONAM COUPON RESULT 2026
-// =====================================
+// ============================================
 
-// ---------------- COUNTDOWN ----------------
+// Draw Date
+const drawDate = new Date("2026-08-26T18:30:00").getTime();
 
-const drawDate = new Date("August 26, 2026 19:30:00").getTime();
+let winners = [];
 
-const timer = setInterval(() => {
+// ============================================
+// COUNTDOWN
+// ============================================
+
+function updateCountdown() {
 
     const now = new Date().getTime();
 
     const distance = drawDate - now;
 
+    // Result Published
     if (distance <= 0) {
-        clearInterval(timer);
-        document.getElementById("timer").innerHTML = "🎉 Draw Started";
+
+        document.getElementById("noticePage").style.display = "none";
+        document.getElementById("mainWebsite").style.display = "block";
+
+        document.getElementById("timer").innerHTML = "Result Published";
+
         return;
     }
 
@@ -24,43 +34,102 @@ const timer = setInterval(() => {
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+    // Notice Page Countdown
+
+    document.getElementById("noticeTimer").innerHTML = `
+
+    <div class="time-box">
+        <span>${days}</span>
+        <small>Days</small>
+    </div>
+
+    <div class="time-box">
+        <span>${hours}</span>
+        <small>Hours</small>
+    </div>
+
+    <div class="time-box">
+        <span>${minutes}</span>
+        <small>Minutes</small>
+    </div>
+
+    <div class="time-box">
+        <span>${seconds}</span>
+        <small>Seconds</small>
+    </div>
+
+    `;
+
+    // Main Website Countdown
+
     document.getElementById("timer").innerHTML =
         `${days} Days ${hours} Hrs ${minutes} Min ${seconds} Sec`;
 
-},1000);
+}
+
+updateCountdown();
+
+setInterval(updateCountdown,1000);
 
 
-// ---------------- LOAD WINNERS ----------------
-
-let winners=[];
+// ============================================
+// LOAD WINNERS
+// ============================================
 
 fetch("winners.json")
+
 .then(response=>response.json())
+
 .then(data=>{
 
     winners=data;
 
     let table="";
 
-    winners
-    .filter(w=>w.public===true)
-    .forEach(w=>{
+    const publicWinners = winners.filter(w=>w.public===true).slice(0,3);
 
-        table += `
+    publicWinners.forEach(w=>{
+
+        table+=`
+
         <tr>
-            <td>${w.prize}</td>
-            <td>${w.coupon}</td>
+
+        <td>${w.prize}</td>
+
+        <td>${w.coupon}</td>
+
         </tr>
+
         `;
 
     });
 
     document.getElementById("winnerTable").innerHTML=table;
 
+})
+
+.catch(()=>{
+
+    document.getElementById("winnerTable").innerHTML=`
+
+    <tr>
+
+    <td colspan="2">
+
+    Winners not available.
+
+    </td>
+
+    </tr>
+
+    `;
+
 });
 
 
-// ---------------- SEARCH ----------------
+// ============================================
+// SEARCH
+// ============================================
 
 function checkCoupon(){
 
@@ -71,37 +140,52 @@ function checkCoupon(){
     if(coupon===""){
 
         result.innerHTML=`
+
         <div style="color:red;font-weight:bold;">
-        Please enter a coupon number.
+
+        Please enter coupon number.
+
         </div>
+
         `;
 
         return;
 
     }
 
-    const winner=winners.find(w=>w.coupon===coupon);
+    const winner=winners.find(w=>w.coupon==coupon);
 
     if(winner){
 
         result.innerHTML=`
 
         <div style="
+
         background:#d1e7dd;
+
         border:2px solid #198754;
+
         border-radius:12px;
+
         padding:25px;
+
         margin-top:20px;
+
         text-align:center;
+
         ">
 
-        <h2 style="color:#198754;">🎉 Congratulations! 🎉</h2>
+        <h2 style="color:#198754;">
+
+        🎉 Congratulations 🎉
+
+        </h2>
 
         <h3>${winner.prize}</h3>
 
-        <p><strong>Coupon:</strong> ${winner.coupon}</p>
+        <p><b>Coupon :</b> ${winner.coupon}</p>
 
-        <p><strong>Winner:</strong> ${winner.name}</p>
+        <p><b>Name :</b> ${winner.name}</p>
 
         </div>
 
@@ -116,17 +200,34 @@ function checkCoupon(){
         result.innerHTML=`
 
         <div style="
+
         background:#f8d7da;
+
         border:2px solid #dc3545;
+
         border-radius:12px;
+
         padding:20px;
+
         margin-top:20px;
+
         text-align:center;
+
         ">
 
-        <h2 style="color:#dc3545;">❌ Better Luck Next Time</h2>
+        <h2 style="color:#dc3545;">
 
-        <p>This coupon number was not selected.</p>
+        ❌ Better Luck Next Time
+
+        </h2>
+
+        <p>
+
+        Coupon Number <b>${coupon}</b>
+
+        was not selected.
+
+        </p>
 
         </div>
 
@@ -137,30 +238,19 @@ function checkCoupon(){
 }
 
 
-// ---------------- FIREWORKS ----------------
+// ============================================
+// FIREWORKS
+// ============================================
 
 function celebrate(){
 
-    const duration=3500;
+    const duration=3000;
 
     const animationEnd=Date.now()+duration;
 
-    const defaults={
-        startVelocity:35,
-        spread:360,
-        ticks:80,
-        zIndex:9999
-    };
+    const interval=setInterval(()=>{
 
-    function randomInRange(min,max){
-        return Math.random()*(max-min)+min;
-    }
-
-    const interval=setInterval(function(){
-
-        const timeLeft=animationEnd-Date.now();
-
-        if(timeLeft<=0){
+        if(Date.now()>animationEnd){
 
             clearInterval(interval);
 
@@ -168,30 +258,24 @@ function celebrate(){
 
         }
 
-        const particleCount=50*(timeLeft/duration);
+        confetti({
 
-        confetti(Object.assign({},defaults,{
-            particleCount,
-            origin:{
-                x:randomInRange(0.1,0.3),
-                y:Math.random()-0.2
-            }
-        }));
+            particleCount:80,
 
-        confetti(Object.assign({},defaults,{
-            particleCount,
-            origin:{
-                x:randomInRange(0.7,0.9),
-                y:Math.random()-0.2
-            }
-        }));
+            spread:100,
 
-    },250);
+            origin:{y:0.6}
+
+        });
+
+    },300);
 
 }
 
 
-// ---------------- ENTER KEY ----------------
+// ============================================
+// ENTER KEY
+// ============================================
 
 document.getElementById("coupon").addEventListener("keypress",function(e){
 
