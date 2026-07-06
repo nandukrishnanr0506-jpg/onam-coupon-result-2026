@@ -1,26 +1,39 @@
 [
   {
     "coupon":"101",
-    "name":"Nandu Krishnan",
+    "name":"silver",
     "prize":"🥇 First Prize",
-    "public":true
+    "public":false
   },
   {
     "coupon":"102",
-    "name":"Anjali S",
+    "name":"silver",
     "prize":"🥈 Second Prize",
-    "public":true
+    "public":false
   },
   {
     "coupon":"103",
-    "name":"Rahul R",
+    "name":"silver",
     "prize":"🥉 Third Prize",
-    "public":true
+    "public":false
   },
   {
     "coupon":"104",
-    "name":"Akhil",
+    "name":"silver",
     "prize":"🎁 Consolation Prize",
     "public":false
+  },
+  {
+    "coupon":"105",
+    "name":"silver",
+    "prize":"🥉 Third Prize",
+    "public":false
+  },
+   {
+    "coupon":"106",
+    "name":"silver",
+    "prize":"🥉 Third Prize",
+    "public":false
   }
+
 ]
