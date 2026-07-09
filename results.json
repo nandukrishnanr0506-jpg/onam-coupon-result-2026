@@ -1,0 +1,47 @@
+[
+    {
+        "coupon":"1001",
+        "name":"UNNI",
+        "prize":"TVS Jupiter"
+    },
+    {
+        "coupon":"1002",
+        "name":"RAHUL",
+        "prize":"Refrigerator"
+    },
+    {
+        "coupon":"1003",
+        "name":"ARUN",
+        "prize":"Washing Machine"
+    },
+    {
+        "coupon":"1004",
+        "name":"SREEJITH",
+        "prize":"Microwave Oven"
+    },
+    {
+        "coupon":"1005",
+        "name":"AKHIL",
+        "prize":"Bicycle"
+    },
+    {
+        "coupon":"1006",
+        "name":"AKHIL",
+        "prize":"Home Theater"
+    },
+    {
+        "coupon":"1007",
+        "name":"AKHIL",
+        "prize":"Mixer Grinder"
+    },
+    {
+        "coupon":"1008",
+        "name":"AKHIL",
+        "prize":"Gas Stove"
+    },
+    {
+        "coupon":"1009",
+        "name":"AKHIL",
+        "prize":"Air Fryer"
+    }
+]
