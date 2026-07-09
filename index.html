@@ -3,232 +3,456 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>Silver Arts and Club | Onam Coupon Result 2026</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="style.css">
+    <title>Silver Arts & Sports Club | Onam Coupon 2026</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="icon" href="images/logo1.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 </head>
 
 <body>
 
-<!-- =======================================
-     NOTICE PAGE
-======================================= -->
+    <!-- ========================= -->
+    <!-- LOADER -->
+    <!-- ========================= -->
 
-<div id="noticePage">
+   <div class="loader" id="loader">
 
-    <div class="notice-box">
+    <div class="loader-container">
 
-        <img src="logo.png" class="logo" alt="Silver Arts and Club">
+        <div class="gold-ring"></div>
 
-        <h1>SILVER ARTS AND SPORTS CLUB</h1>
+        <img src="images/logo.png" class="loader-image" alt="Onam Coupon">
 
-        <p>Kudicodu, Nedumankavu P.O., Kollam</p>
+        <h2 class="loading-text">Loading...</h2>
 
-        <h2>🌼 ONAM COUPON RESULT 2026 🌼</h2>
+        <div class="loading-bar">
 
-        <hr>
+            <div class="loading-progress"></div>
 
-        <h3>Results will be published after the official draw.</h3>
-
-        <br>
-
-        <p><b>📅 Date :</b> 26 August 2026</p>
-
-        <p><b>🕡 Time :</b> 7:30 PM</p>
-
-        <p><b>📍 Venue :</b> Parakettu Junction</p>
-
-        <br>
-
-        <h3>Result will be published in</h3>
-
-        <div id="noticeTimer"></div>
-
-        <br>
-
-        <p>Please visit again after the countdown ends.</p>
-        
+        </div>
 
     </div>
 
 </div>
+    <!-- ========================= -->
+    <!-- HEADER -->
+    <!-- ========================= -->
 
-<!-- =======================================
-     MAIN WEBSITE
-======================================= -->
+    <header>
 
-<div id="mainWebsite" style="display:none;">
+        <div class="logo">
 
-<header class="hero">
+            <img src="images/logo1.png" alt="Logo">
 
-    <img src="logo.png" class="logo" alt="Logo">
+            <div>
 
-    <h1>SILVER ARTS AND SPORTS CLUB</h1>
+                <h2>Silver Arts & Sports Club</h2>
 
-    <p>Kudicodu, Nedumankavu P.O., Kollam</p>
+                <p>25th Anniversary Onam Coupon 2026</p>
 
-    <div class="ribbon">
+            </div>
 
-        ONAM COUPON RESULT 2026
+        </div>
+
+        <nav>
+
+            <a href="#home">Home</a>
+
+            <a href="#countdown">Countdown</a>
+
+            <a href="#prizes">Prizes</a>
+
+            <a href="#search">Results</a>
+
+            <a href="#contact">Contact</a>
+
+        </nav>
+
+        <div class="menu">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </div>
+
+    </header>
+
+    <!-- ========================= -->
+    <!-- HERO -->
+    <!-- ========================= -->
+
+    <section id="home" class="hero">
+
+        <div class="hero-overlay">
+
+            <img src="images/logo.png" class="hero-logo">
+
+            <h3>Welcome To</h3>
+
+            <h1>ONAM COUPON 2026</h1>
+
+            <h2>25<sup>th</sup> Anniversary</h2>
+
+            <p>
+
+                Silver Arts & Sports Club proudly presents the
+                Grand Onam Lucky Draw.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#prizes" class="btn">
+                    View Prizes
+                </a>
+
+                <a href="#search" class="btn btn2">
+                    Check Result
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+<!-- ========================= -->
+    
+
+
+    <!-- ========================= -->
+    <!-- COUNTDOWN -->
+    <!-- ========================= -->
+
+    <section id="countdown" class="countdown">
+
+        <h2>Lucky Draw Countdown</h2>
+
+        <p>
+
+            Results will be announced on
+
+            <strong>26 August 2026 | 7:30 PM</strong>
+
+        </p>
+
+        <div class="timer">
+
+            <div class="box">
+
+                <span id="days">00</span>
+
+                <small>Days</small>
+
+            </div>
+
+            <div class="box">
+
+                <span id="hours">00</span>
+
+                <small>Hours</small>
+
+            </div>
+
+            <div class="box">
+
+                <span id="minutes">00</span>
+
+                <small>Minutes</small>
+
+            </div>
+
+            <div class="box">
+
+                <span id="seconds">00</span>
+
+                <small>Seconds</small>
+
+            </div>
+
+        </div>
+
+    </section>
+<!-- RESULT SEARCH -->
+    <!-- ========================= -->
+
+    <section id="search" class="search-section">
+
+        <h2>Check Lucky Draw Result</h2>
+
+        <p>Enter your coupon number below.</p>
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="couponNumber"
+                placeholder="Enter Coupon Number">
+
+            <button id="searchBtn">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                Search
+
+            </button>
+
+        </div>
+
+        <!-- Result Card -->
+
+        <div id="resultCard" class="result-card" style="display:none;">
+
+            <div id="resultIcon" class="result-icon">🏆</div>
+
+            <h2 id="resultTitle"></h2>
+
+            <div id="resultMessage"></div>
+
+        </div>
+
+    </section>
+        <!-- ========================= -->
+    <!-- TOP 5 PRIZES -->
+    <!-- ========================= -->
+
+    <section id="prizes" class="prizes">
+
+        <div class="section-title">
+
+            <h2>🏆 Top 5 Prizes</h2>
+
+            <p>25th Anniversary Grand Onam Lucky Draw</p>
+
+        </div>
+
+        <div class="prize-grid">
+
+            <div class="prize-card">
+
+                <span class="badge gold">1st Prize</span>
+
+                <img src="images/jupiter.png" alt="TVS Jupiter">
+
+                <h3>TVS Jupiter</h3>
+
+                <p>Brand New Scooter</p>
+
+            </div>
+
+            <div class="prize-card">
+
+                <span class="badge silver">2nd Prize</span>
+
+                <img src="images/fridge.png" alt="Refrigerator">
+
+                <h3>Refrigerator</h3>
+
+                <p>Refrigerator</p>
+
+            </div>
+
+            <div class="prize-card">
+
+                <span class="badge bronze">3rd Prize</span>
+
+                <img src="images/washing-machine.png" alt="Washing Machine">
+
+                <h3>Washing Machine</h3>
+
+                <p>Fully Automatic</p>
+
+            </div>
+
+            <div class="prize-card">
+
+                <span class="badge">4th Prize</span>
+
+                <img src="images/microwave.png" alt="Microwave">
+
+                <h3>Microwave Oven</h3>
+
+                <p>Oven</p>
+
+            </div>
+
+            <div class="prize-card">
+
+                <span class="badge">5th Prize</span>
+
+                <img src="images/bicycle.png" alt="Bicycle">
+
+                <h3>Bicycle</h3>
+
+                <p>Bicycle</p>
+
+            </div>
+
+        </div>
+
+        <div class="view-all">
+
+            <a href="prizes.html" class="btn">
+
+                View All 25 Prizes →
+
+            </a>
+
+        </div>
+
+    </section>
+
+    
+    <!-- ========================= -->
+    <!-- ABOUT -->
+    <!-- ========================= -->
+
+    <section class="about">
+
+        <div class="section-title">
+
+            <h2>About The Lucky Draw</h2>
+
+        </div>
+
+        <div class="about-card">
+
+            <p>
+
+                Silver Arts & Sports Club proudly celebrates its
+                <strong>25th Anniversary</strong>
+                with a Grand Onam Lucky Draw.
+
+            </p>
+
+            <p>
+
+                Thank you to everyone who supports our club and
+                participates in this year's Onam Coupon. The images given in the website are only for reference.
+
+            </p>
+
+        </div>
+
+    </section>
+        <!-- ========================= -->
+    <!-- CONTACT -->
+    <!-- ========================= -->
+
+    <section id="contact" class="contact">
+
+        <div class="section-title">
+
+            <h2>Contact Us</h2>
+
+            <p>For coupon enquiries and lucky draw information</p>
+
+        </div>
+
+        <div class="contact-card">
+
+            <p>
+                <i class="fa-solid fa-location-dot"></i>
+                Silver Arts & Sports Club
+            </p>
+
+            <p>
+                <i class="fa-solid fa-phone"></i>
+                +91 9496538486
+            </p>
+
+            <p>
+                <i class="fa-solid fa-envelope"></i>
+                silverartsandsports@gmail.com
+            </p>
+
+            <p>
+                <i class="fa-solid fa-calendar-days"></i>
+                Lucky Draw Date : 26-08-2026 | 7:30 PM
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- WHATSAPP BUTTON -->
+    <!-- ========================= -->
+
+    <a href="https://wa.me/919496538486"
+       class="floating-whatsapp"
+       target="_blank">
+
+        <i class="fab fa-whatsapp"></i>
+
+    </a>
+
+    <!-- ========================= -->
+    <!-- FOOTER -->
+    <!-- ========================= -->
+
+    <footer>
+
+        <img src="images/logo.png" alt="Logo">
+
+        <h3>Silver Arts & Sports Club</h3>
+
+        <p>25<sup>th</sup> Anniversary Onam Coupon 2026</p>
+
+        <p>
+            © 2026 Silver Arts & Sports Club.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+    <!-- ========================= -->
+    <!-- MOBILE BOTTOM NAVIGATION -->
+    <!-- ========================= -->
+
+    <div class="bottom-nav">
+
+        <a href="#home">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+
+        <a href="#countdown">
+            <i class="fa-solid fa-clock"></i>
+            <span>Countdown</span>
+        </a>
+
+        <a href="#prizes">
+            <i class="fa-solid fa-gift"></i>
+            <span>Prizes</span>
+        </a>
+
+        <a href="#search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Result</span>
+        </a>
+
+        <a href="#contact">
+            <i class="fa-solid fa-phone"></i>
+            <span>Contact</span>
+        </a>
 
     </div>
 
-</header>
-
-<!-- Countdown -->
-
-<section class="cards">
-
-<div class="card">
-
-<h3>📅 Draw Date</h3>
-
-<p>26 August 2026</p>
-
-</div>
-
-<div class="card">
-
-<h3>🕡 Time</h3>
-
-<p>7:30 PM</p>
-
-</div>
-
-<div class="card">
-
-<h3>⏳ Countdown</h3>
-
-<div id="timer"></div>
-
-</div>
-
-</section>
-
-<!-- Search -->
-
-<section class="search-box">
-
-<h2>🔍 Check Your Coupon</h2>
-
-<input
-type="text"
-id="coupon"
-placeholder="Enter Coupon Number">
-
-<button onclick="checkCoupon()">
-
-CHECK RESULT
-
-</button>
-
-<div id="result"></div>
-
-</section>
-
-<!-- Winners -->
-
-<section class="winners">
-
-<h2>🏆 Major Prize Winners</h2>
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>Prize</th>
-
-<th>Coupon Number</th>
-
-</tr>
-
-</thead>
-
-<tbody id="winnerTable">
-
-</tbody>
-
-</table>
-
-</section>
-
-<!-- Download -->
-
-<section class="download">
-
-<a href="results.pdf" download>
-
-📄 Download Official Result PDF
-
-</a>
-
-</section>
-
-<!-- Contact -->
-
-<footer>
-
-<h2>Contact</h2>
-
-<p><b>📍 Venue :</b> Parakettu Junction</p>
-
-<p>94965 38486</p>
-
-<div class="contact-buttons">
-
-<a
-href="tel:+919496538486"
-class="call-btn">
-
-📞 Call
-
-</a>
-
-<a
-href="https://wa.me/919496538486"
-target="_blank"
-class="whatsapp-btn">
-
-💬 WhatsApp
-
-</a>
-
-<a
-href="https://maps.app.goo.gl/8NdjLgW16gixBGzk9"
-target="_blank"
-class="location-btn">
-
-📍 Location
-
-</a>
-
-</div>
-
-<br>
-
-<p>
-
-© 2026 SILVER ARTS AND SPORTS CLUB
-
-</p>
-
-</footer>
-
-</div>
-
-<!-- Fireworks -->
-
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-
-<!-- Main Script -->
-
-<script src="script.js"></script>
+    <!-- ========================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ========================= -->
+
+    <script src="script.js"></script>
 
 </body>
 
