@@ -1,288 +1,381 @@
-// ============================================
-// SILVER ARTS AND CLUB
-// ONAM COUPON RESULT 2026
-// ============================================
+/*====================================
+    SILVER ARTS & SPORTS CLUB
+    ONAM COUPON 2026
+====================================*/
 
-// Draw Date
-const drawDate = new Date("2026-08-26T18:30:00").getTime();
 
-let winners = [];
+// ===============================
+// DRAW DATE
+// ===============================
 
-// ============================================
+const targetDate = new Date("august 26, 2026 19:30:00").getTime();
+
+
+// ===============================
+// LOADER
+// ===============================
+
+window.addEventListener("load", function () {
+
+    const loader = document.querySelector(".loader");
+
+    setTimeout(() => {
+
+        loader.style.opacity = "0";
+        loader.style.visibility = "hidden";
+
+    }, 1000);
+
+});
+
+
+// ===============================
 // COUNTDOWN
-// ============================================
+// ===============================
 
 function updateCountdown() {
 
     const now = new Date().getTime();
 
-    const distance = drawDate - now;
+    const distance = targetDate - now;
 
-    // Result Published
+    const days = document.getElementById("days");
+    const hours = document.getElementById("hours");
+    const minutes = document.getElementById("minutes");
+    const seconds = document.getElementById("seconds");
+
+    const input = document.getElementById("couponNumber");
+    const button = document.getElementById("searchBtn");
+
     if (distance <= 0) {
 
-        document.getElementById("noticePage").style.display = "none";
-        document.getElementById("mainWebsite").style.display = "block";
+        days.innerHTML = "00";
+        hours.innerHTML = "00";
+        minutes.innerHTML = "00";
+        seconds.innerHTML = "00";
 
-        document.getElementById("timer").innerHTML = "Result Published";
+        input.disabled = false;
+        button.disabled = false;
 
         return;
     }
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    const d = Math.floor(distance / (1000 * 60 * 60 * 24));
 
-    // Notice Page Countdown
+    const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
-    document.getElementById("noticeTimer").innerHTML = `
+    const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 
-    <div class="time-box">
-        <span>${days}</span>
-        <small>Days</small>
-    </div>
+    const s = Math.floor((distance % (1000 * 60)) / 1000);
 
-    <div class="time-box">
-        <span>${hours}</span>
-        <small>Hours</small>
-    </div>
+    days.innerHTML = String(d).padStart(2, "0");
+    hours.innerHTML = String(h).padStart(2, "0");
+    minutes.innerHTML = String(m).padStart(2, "0");
+    seconds.innerHTML = String(s).padStart(2, "0");
 
-    <div class="time-box">
-        <span>${minutes}</span>
-        <small>Minutes</small>
-    </div>
-
-    <div class="time-box">
-        <span>${seconds}</span>
-        <small>Seconds</small>
-    </div>
-
-    `;
-
-    // Main Website Countdown
-
-    document.getElementById("timer").innerHTML =
-        `${days} Days ${hours} Hrs ${minutes} Min ${seconds} Sec`;
+    input.disabled = true;
+    button.disabled = true;
 
 }
 
 updateCountdown();
 
-setInterval(updateCountdown,1000);
+setInterval(updateCountdown, 1000);
 
 
-// ============================================
-// LOAD WINNERS
-// ============================================
+// ===============================
+// SHOW RESULT CARD
+// ===============================
 
-fetch("winners.json")
+function showResult(icon, title, message) {
 
-.then(response=>response.json())
+    const card = document.getElementById("resultCard");
 
-.then(data=>{
+    card.style.display = "block";
 
-    winners=data;
+    document.getElementById("resultIcon").innerHTML = icon;
 
-    let table="";
+    document.getElementById("resultTitle").innerHTML = title;
 
-    const publicWinners = winners.filter(w=>w.public===true).slice(0,3);
+    document.getElementById("resultMessage").innerHTML = message;
 
-    publicWinners.forEach(w=>{
-
-        table+=`
-
-        <tr>
-
-        <td>${w.prize}</td>
-
-        <td>${w.coupon}</td>
-
-        </tr>
-
-        `;
-
+    card.scrollIntoView({
+        behavior: "smooth"
     });
-
-    document.getElementById("winnerTable").innerHTML=table;
-
-})
-
-.catch(()=>{
-
-    document.getElementById("winnerTable").innerHTML=`
-
-    <tr>
-
-    <td colspan="2">
-
-    Winners not available.
-
-    </td>
-
-    </tr>
-
-    `;
-
-});
-
-
-// ============================================
-// SEARCH
-// ============================================
-
-function checkCoupon(){
-
-    const coupon=document.getElementById("coupon").value.trim();
-
-    const result=document.getElementById("result");
-
-    if(coupon===""){
-
-        result.innerHTML=`
-
-        <div style="color:red;font-weight:bold;">
-
-        Please enter coupon number.
-
-        </div>
-
-        `;
-
-        return;
-
-    }
-
-    const winner=winners.find(w=>w.coupon==coupon);
-
-    if(winner){
-
-        result.innerHTML=`
-
-        <div style="
-
-        background:#d1e7dd;
-
-        border:2px solid #198754;
-
-        border-radius:12px;
-
-        padding:25px;
-
-        margin-top:20px;
-
-        text-align:center;
-
-        ">
-
-        <h2 style="color:#198754;">
-
-        🎉 Congratulations 🎉
-
-        </h2>
-
-        <h3>${winner.prize}</h3>
-
-        <p><b>Coupon :</b> ${winner.coupon}</p>
-
-        <p><b>Name :</b> ${winner.name}</p>
-
-        </div>
-
-        `;
-
-        celebrate();
-
-    }
-
-    else{
-
-        result.innerHTML=`
-
-        <div style="
-
-        background:#f8d7da;
-
-        border:2px solid #dc3545;
-
-        border-radius:12px;
-
-        padding:20px;
-
-        margin-top:20px;
-
-        text-align:center;
-
-        ">
-
-        <h2 style="color:#dc3545;">
-
-        ❌ Better Luck Next Time
-
-        </h2>
-
-        <p>
-
-        Coupon Number <b>${coupon}</b>
-
-        was not selected.
-
-        </p>
-
-        </div>
-
-        `;
-
-    }
 
 }
 
 
-// ============================================
-// FIREWORKS
-// ============================================
+// ===============================
+// MOBILE MENU
+// ===============================
 
-function celebrate(){
+const menu = document.querySelector(".menu");
 
-    const duration=3000;
+const nav = document.querySelector("nav");
 
-    const animationEnd=Date.now()+duration;
+menu.addEventListener("click", () => {
 
-    const interval=setInterval(()=>{
+    nav.classList.toggle("show");
 
-        if(Date.now()>animationEnd){
+});
 
-            clearInterval(interval);
 
-            return;
+// ===============================
+// SMOOTH SCROLL
+// ===============================
 
-        }
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-        confetti({
+    anchor.addEventListener("click", function (e) {
 
-            particleCount:80,
+        e.preventDefault();
 
-            spread:100,
+        document.querySelector(this.getAttribute("href")).scrollIntoView({
 
-            origin:{y:0.6}
+            behavior: "smooth"
 
         });
 
-    },300);
+    });
+
+});
+/*====================================
+    SEARCH COUPON
+====================================*/
+
+async function searchCoupon() {
+
+    const coupon = document.getElementById("couponNumber").value.trim();
+
+    // Empty input
+    if (coupon === "") {
+
+        showResult(
+            "⚠️",
+            "Enter Coupon Number",
+            "Please enter your coupon number."
+        );
+
+        return;
+    }
+
+    // Before draw time
+    if (new Date().getTime() < targetDate) {
+
+        showResult(
+            "⏳",
+            "RESULT NOT PUBLISHED",
+            `Please wait until
+
+26-08-2026
+7:30 PM
+
+The lucky draw result will be published after the official draw.`
+        );
+
+        return;
+    }
+     
+    try {
+
+        const response = await fetch("results.json");
+
+        if (!response.ok) {
+
+            throw new Error("Unable to load results.");
+
+        }
+
+        const winners = await response.json();
+
+        const winner = winners.find(item => item.coupon === coupon);
+
+        if (winner) {
+
+            showResult(
+                
+                "🏆",
+                "CONGRATULATIONS!",
+                `Coupon Number
+                
+
+${winner.coupon}
+
+━━━━━━━━━━━━━━━━━━
+
+Winner
+
+${winner.name}
+
+━━━━━━━━━━━━━━━━━━
+
+Prize
+
+${winner.prize}`
+            );
+            launchConfetti();
+
+        } else {
+
+            showResult(
+                "❌",
+                "BETTER LUCK NEXT TIME",
+                `Coupon Number
+
+${coupon}
+
+━━━━━━━━━━━━━━━━━━
+
+No Prize Found
+
+Thank you for participating
+in Silver Arts & Sports Club
+Onam Coupon 2026.`
+            );
+
+        }
+
+    } catch (error) {
+
+        showResult(
+            "⚠️",
+            "ERROR",
+            "Unable to load results.\nPlease try again later."
+        );
+
+        console.error(error);
+
+    }
 
 }
 
 
-// ============================================
-// ENTER KEY
-// ============================================
+/*====================================
+    SEARCH BUTTON
+====================================*/
 
-document.getElementById("coupon").addEventListener("keypress",function(e){
+document
+.getElementById("searchBtn")
+.addEventListener("click", searchCoupon);
 
-    if(e.key==="Enter"){
 
-        checkCoupon();
+/*====================================
+    ENTER KEY SEARCH
+====================================*/
+
+document
+.getElementById("couponNumber")
+.addEventListener("keypress", function (e) {
+
+    if (e.key === "Enter") {
+
+        searchCoupon();
 
     }
 
 });
+
+
+/*====================================
+    HEADER EFFECT
+====================================*/
+
+window.addEventListener("scroll", function () {
+
+    const header = document.querySelector("header");
+
+    if (window.scrollY > 80) {
+
+        header.style.background = "rgba(0,0,0,.70)";
+        header.style.boxShadow = "0 10px 25px rgba(0,0,0,.35)";
+
+    } else {
+
+        header.style.background = "rgba(0,0,0,.25)";
+        header.style.boxShadow = "none";
+
+    }
+
+});
+
+
+/*====================================
+    ACTIVE MENU
+====================================*/
+
+const sections = document.querySelectorAll("section");
+
+const navLinks = document.querySelectorAll("nav a");
+
+window.addEventListener("scroll", () => {
+
+    let current = "";
+
+    sections.forEach(section => {
+
+        const top = section.offsetTop - 150;
+
+        if (pageYOffset >= top) {
+
+            current = section.getAttribute("id");
+
+        }
+
+    });
+
+    navLinks.forEach(link => {
+
+        link.classList.remove("active");
+
+        if (link.getAttribute("href") === "#" + current) {
+
+            link.classList.add("active");
+
+        }
+
+    });
+
+});
+function launchConfetti(){
+
+    const colors=[
+        "#FFD700",
+        "#00C853",
+        "#FF5252",
+        "#448AFF",
+        "#FFFFFF",
+        "#FF9800"
+    ];
+
+    for(let i=0;i<150;i++){
+
+        const confetti=document.createElement("div");
+
+        confetti.className="confetti";
+
+        confetti.style.left=Math.random()*100+"vw";
+
+        confetti.style.background=
+        colors[Math.floor(Math.random()*colors.length)];
+
+        confetti.style.animationDuration=
+        (Math.random()*3+2)+"s";
+
+        confetti.style.width=
+        (Math.random()*8+6)+"px";
+
+        confetti.style.height=
+        confetti.style.width;
+
+        document.body.appendChild(confetti);
+
+        setTimeout(()=>{
+
+            confetti.remove();
+
+        },5000);
+
+    }
+
+}
